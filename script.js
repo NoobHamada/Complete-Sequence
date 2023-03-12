@@ -50,6 +50,7 @@ submit.addEventListener("click", function () {
         case rand == 5 && "64":
         case rand == 6 && "75":
         case rand == 7 && "27":
+        case rand == 8 && "0010":
             results.innerText = "Correct";
             reroll.innerText = "Reroll ?";
             break;
