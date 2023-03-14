@@ -14,33 +14,41 @@ let fifthQues = ["32", "?", "128"];
 let sixthQues = ["?", "64", "53"];
 let sventhQues = ["?", "22", "17", "12"];
 let eigthQues = ["1000", "0100", "?", "0001"];
+let ninthQues = ["-1000", "0200", "-0030", "?"];
 
 // Random Question Generating
-let rand = Math.ceil(Math.random() * 8);
+let rand = Math.ceil(Math.random() * 9);
 
 // Print The Random Generated Num In The Console
 console.log("Random Sequence Number", rand);
 
 // Get The Random Question In The Display
-if (rand == 1) {
-    gameBox.textContent = firstQues;
-} else if (rand == 2) {
-    gameBox.textContent = secQues;
-} else if (rand == 3) {
-    gameBox.textContent = thirdQues;
-} else if (rand == 4) {
-    gameBox.textContent = fourthQues;
-} else if (rand == 5) {
-    gameBox.textContent = fifthQues;
-} else if (rand == 6) {
-    gameBox.textContent = sixthQues;
-} else if (rand == 7) {
-    gameBox.textContent = sventhQues;
-} else if (rand == 8) {
-    gameBox.textContent = eigthQues;
-}
+function startRand() {
+    if (rand == 1) {
+        gameBox.textContent = firstQues;
+    } else if (rand == 2) {
+        gameBox.textContent = secQues;
+    } else if (rand == 3) {
+        gameBox.textContent = thirdQues;
+    } else if (rand == 4) {
+        gameBox.textContent = fourthQues;
+    } else if (rand == 5) {
+        gameBox.textContent = fifthQues;
+    } else if (rand == 6) {
+        gameBox.textContent = sixthQues;
+    } else if (rand == 7) {
+        gameBox.textContent = sventhQues;
+    } else if (rand == 8) {
+        gameBox.textContent = eigthQues;
+    } else if (rand == 9) {
+        gameBox.textContent = ninthQues;
+    }
+};
 
-// Check The Answers
+// Start The Check Over The Random Generated Number
+startRand();
+
+// Check The Answers On The Input Field
 submit.addEventListener("click", function () {
     switch (input.value) {
         case rand == 1 && "3":
@@ -51,6 +59,7 @@ submit.addEventListener("click", function () {
         case rand == 6 && "75":
         case rand == 7 && "27":
         case rand == 8 && "0010":
+        case rand == 9 && "0004":
             results.innerText = "Correct";
             reroll.innerText = "Reroll ?";
             break;
@@ -65,5 +74,9 @@ submit.addEventListener("click", function () {
 
 // Rerolling Sequences
 reroll.addEventListener("click", function () {
-    window.location.reload();
+    rand = Math.ceil(Math.random() * 9);
+    startRand();
+    input.value = "";
+    results.innerText = "";
+    reroll.innerText = ""
 })
